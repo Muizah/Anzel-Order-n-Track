@@ -44,7 +44,7 @@ body{
     width: 15rem;
 }
 
-.left_div:after {
+/* .left_div:after {
     content: '\A';
     position: absolute;
     width: 50%; 
@@ -56,15 +56,18 @@ body{
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
-}
+} */
 
 button{
     background-color: navy;
-    color: white;
     padding: 0.8rem;
     border-radius: 20rem;
     font-size: large;
-    
+}
+
+button:hover{
+    background-color: black;
+    font-size: xx-large;
 }
 
 .right_div h1{
@@ -74,6 +77,11 @@ button{
 
 .right_div p{
     font-size: 2rem;
+}
+
+a{
+    text-decoration: none;
+    color: white;
 }
 
 .buttons{

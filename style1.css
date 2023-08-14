@@ -1,0 +1,72 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.username, .password{
+    display: flex;
+    gap: 1rem;
+}
+
+.main_div{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border:2px solid navy;
+    padding: 2rem;
+    font-family: 'Marck Script', cursive;
+    background: url(./assets/luxa.org-opacity-changed-img3.jpg);
+    background-size: cover;
+    color: navy;
+    font-family: 'Merriweather', serif;
+}
+
+.username{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.username:hover, .password:hover{
+    font-size: xx-large;
+}
+
+.password{
+    margin-bottom: 2rem;
+}
+
+.fa-solid{
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 20px;
+}
+
+input{
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    padding-left: 0.5rem;
+}
+
+::placeholder {
+    color: navy;
+  }
+
+button{
+    width: -webkit-fill-available;
+    align-self: center;
+    padding: 0.5rem 0;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: white;
+    color: navy;
+}
