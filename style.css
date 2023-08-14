@@ -1,0 +1,100 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body{
+    background: url(./assets/Landing\ image\ -\ ANZEL.jpg);
+    background-size: cover;
+}
+
+.main_div{
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border:2px solid white;
+}
+
+.right_div{
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    align-items: center;
+    justify-content: space-around;
+    font-family: 'Marck Script', cursive;
+    background-color: white;
+}
+
+.left_div img{
+    height: 35rem;
+}
+
+.left_div{
+    width: 75%;
+}
+
+.right_div img{
+    width: 15rem;
+}
+
+.left_div:after {
+    content: '\A';
+    position: absolute;
+    width: 50%; 
+    height:100%;
+    top:0; 
+    left:0;
+    background:rgba(0,0,0,0.);
+    opacity: 1;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+
+button{
+    background-color: navy;
+    color: white;
+    padding: 0.8rem;
+    border-radius: 20rem;
+    font-size: large;
+    
+}
+
+.right_div h1{
+    color: orangered;
+    font-size: 2.5rem;
+}
+
+.right_div p{
+    font-size: 2rem;
+}
+
+.buttons{
+    display: flex;
+    gap: 2rem;
+}
+
+@media screen and (max-width: 885px) {
+    .main_div{
+        flex-direction: column;
+    }
+
+    .left_div,.right_div{
+        width: auto;
+    }
+
+    .left_div{
+        height: 12rem;
+    }
+
+    .right_div{
+        height: 28rem;
+    }
+}
