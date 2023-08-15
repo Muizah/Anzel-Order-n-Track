@@ -7,11 +7,6 @@
   overflow-x: hidden;
 }
 
-body{
-    background: url(./assets/Landing\ image\ -\ ANZEL.jpg);
-    background-size: cover;
-}
-
 .main_div{
     display: flex;
     position: absolute;
@@ -19,7 +14,8 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    border:2px solid white;
+    border:5px solid orangered;
+    border-radius: 30px;
 }
 
 .right_div{
@@ -44,7 +40,7 @@ body{
     width: 15rem;
 }
 
-/* .left_div:after {
+.left_div:after {
     content: '\A';
     position: absolute;
     width: 50%; 
@@ -56,7 +52,7 @@ body{
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
-} */
+}
 
 button{
     background-color: navy;

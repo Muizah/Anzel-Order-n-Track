@@ -7,6 +7,13 @@
   overflow-x: hidden;
 }
 
+body{
+    background: url(./assets/luxa.org-opacity-changed-img3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 60rem;
+}
+
 .username, .password{
     display: flex;
     gap: 1rem;
@@ -20,13 +27,12 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    border:2px solid navy;
     padding: 2rem;
     font-family: 'Marck Script', cursive;
-    background: url(./assets/luxa.org-opacity-changed-img3.jpg);
     background-size: cover;
     color: navy;
     font-family: 'Merriweather', serif;
+    font-size: x-large;
 }
 
 .username{
@@ -38,21 +44,26 @@
     font-size: xx-large;
 }
 
+input:hover, button:hover{
+    border: 4px solid navy;
+}
+
 .password{
     margin-bottom: 2rem;
 }
 
 .fa-solid{
     background-color: white;
-    padding: 0.5rem;
-    border-radius: 20px;
+    padding: 1rem;
+    border-radius: 50px;
 }
 
 input{
-    border-radius: 20px;
+    border-radius: 50px;
     border: none;
     outline: none;
-    padding-left: 0.5rem;
+    padding: 1rem;
+    font-size: large;
 }
 
 ::placeholder {
@@ -63,10 +74,17 @@ button{
     width: -webkit-fill-available;
     align-self: center;
     padding: 0.5rem 0;
-    border-radius: 20px;
+    border-radius: 50px;
     border: none;
     outline: none;
     cursor: pointer;
     background-color: white;
     color: navy;
+    font-size: x-large;
 }
+
+.password_reset{
+    margin-top: 5rem;
+}
+
+
