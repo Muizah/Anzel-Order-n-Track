@@ -63,7 +63,7 @@ button{
 }
 
 button:hover{
-    background-color: black;
+    background-image: linear-gradient(75deg, orangered, navy);
     font-size: xx-large;
 }
 
