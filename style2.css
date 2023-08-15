@@ -1,0 +1,103 @@
+.e-mail, .password, .confirm_password {
+    position: relative;
+    margin: 20px;
+}
+
+.fa-solid {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+
+input {
+    padding-left: 30px; 
+    width: 300px;
+    height: 30px;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+}
+
+::placeholder {
+    color: navy;
+    padding-left: 0.5rem;
+    font-family: 'Playfair Display', serif;
+}
+
+body{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: large;
+    font-family: 'Playfair Display', serif;
+    overflow: hidden;
+}
+
+.main_div{
+    background-image: linear-gradient(75deg, orangered, navy);
+    padding: 8rem;
+}
+
+header{
+    display: flex;
+    justify-content: flex-start;
+    gap: 6rem;
+    margin-bottom: 3rem;
+}
+
+header a, .reset_password a{
+    color: white;
+    text-decoration: none;
+}
+
+header a:hover, header a:active{
+    text-decoration: underline;
+}
+
+.fa-solid{
+    color: navy;
+}
+
+button{
+    font-family: 'Playfair Display', serif;
+    width: -webkit-fill-available;
+    border-radius: 50px;
+    cursor: pointer;
+    background-color: white;
+    color: navy;
+    padding: 0.4rem;
+    margin-top: 5rem;
+    font-size: medium;
+}
+
+.last_part{
+    display: flex;
+    margin-top: 2rem;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.checkbox{
+    display: flex;
+}
+
+input[type="checkbox" i] {
+    width: auto;
+    height: auto;
+    cursor: pointer;
+}
+
+.reset_password:hover, .checkbox:hover{
+    text-decoration: underline;
+}
+
+
+@media screen and (max-width: 885px){
+
+}
