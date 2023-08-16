@@ -109,6 +109,13 @@ input[type="checkbox" i] {
     text-decoration: underline;
 }
 
+.sign_up,.login, .sign_up_one, .login_one{
+    cursor: pointer;
+}
+
+.sign_up:hover, .login:hover, .sign_up_one:hover, .login_one:hover{
+    text-decoration: underline;
+}
 
 @media screen and (max-width: 885px){
 
