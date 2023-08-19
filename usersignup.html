@@ -7,80 +7,77 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
-    
+    <script src="https://kit.fontawesome.com/bc3623f5c1.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style2.css" />
     <title>Anzel Order-n-Track</title>
   </head>
-<body>
-    <div class="main_div" id="main_div">
-    <header>
-       <div class="sign_up"><p>Sign Up</p></div> 
-       <div class="login"><p>Login</p></div>
-    </header>
-    <div class="sub_div" id="user_signup">
+  <body>
+    <div class="main_div"  id="user_login">
         <form action="">
-            <label for="e-mail">E-mail</label>
-            <div class="e-mail">
-                <i class="fa-solid fa-envelope"></i>
-                <input type="text" name="e-mail" placeholder="Enter your e-mail" required>
-            </div>
-
-            <label for="password">Password</label>
-            <div class="password">
-                <i class="fa-solid fa-lock"></i>
-                <input type="text" name="password" placeholder="Enter your password" required>
-            </div>
-
-            <label for="confirm_password">Confirm password</label>
-            <div class="confirm_password">
-                <i class="fa-solid fa-lock"></i>
-                <input type="text" name="confirm_password" placeholder="Confirm your password" required>
-            </div>
-            <button type="submit">Sign Up</button>
-        </form>
-    </div>
-    </div>
-
-    <div class="main_div" style="display: none;" id="user_login">
-        <header>
-            <div class="sign_up_one"><p>Sign Up</p></div> 
-            <div class="login_one"><p>Login</p></div>
-        </header>
-        <div class="sub_div">
-            <form action="">
+            <div class="sub1">
+            <h2>Login</h2>
                 <label for="e-mail">E-mail</label>
                 <div class="e-mail">
+                    <input type="email" name="e-mail" placeholder="Enter your e-mail" required>
                     <i class="fa-solid fa-envelope"></i>
-                    <input type="text" name="e-mail" placeholder="Enter your e-mail" required>
                 </div>
     
                 <label for="password">Password</label>
                 <div class="password">
+                    <input type="password" name="password" placeholder="Enter your password" required>
                     <i class="fa-solid fa-lock"></i>
-                    <input type="text" name="password" placeholder="Enter your password" required>
+                    <!-- <i class="fa-solid fa-eye-slash"></i> -->
                 </div>
-    
-                <button type="submit">Login</button>
-            </form>
-            <div class="last_part">
-                <div class="checkbox">
-                    <input type="checkbox" id="remember_me" name="remember_me" value="Remember">
-                    <label for="remember_me" style="cursor: pointer;"> Remember Me </label>
-                </div>
-                    <p class="reset_password"><a href="">Forgot Password?</a></p>
             </div>
+                </form>
+                <div class="last_part">
+                    <span class="checkbox">
+                        <input type="checkbox" id="remember_me">
+                        <label for="remember_me" stye="cursor: pointer;"> Remember Me </label>
+                    </span>
+                <a href="" class="reset_password">Forgot Password?</a>
+                </div>
+                <button type="submit">Login Now</button>
+                <div class="login_signup">
+                    <p>Don't have an account?</p>
+                    <div class="sign_up">Sign Up</div>
+                </div>
+            
         </div>
-        </div>
+
+        <div class="main_div"  id="user_signup">
+            <form action="">
+                <div class="sub2">
+                <h2>Sign Up</h2>
+                    <label for="e-mail">E-mail</label>
+                    <div class="e-mail">
+                        <input type="email" name="e-mail" placeholder="Enter your e-mail" required>
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+        
+                    <label for="password">Password</label>
+                    <div class="password">
+                        <input type="password" name="password" placeholder="Create your password" required>
+                        <i class="fa-solid fa-lock"></i>
+                        <!-- <i class="fa-solid fa-eye-slash"></i> -->
+                    </div>
+
+                    <label for="confirm_password">Confirm password</label>
+                    <div class="confirm_password">
+                        <input type="text" name="confirm_password" placeholder="Confirm your password" required>
+                        <i class="fa-solid fa-lock"></i>
+                        <!-- <i class="fa-solid fa-eye-slash"></i> -->
+                    </div>
+                </div>
+                    </form>
+                    <button type="submit">Sign Up Now</button>
+                    <div class="login_signup">
+                        <p>Already have an account?</p>
+                       <div class="login">Login</div>
+                    </div>
+                
+            </div>
         <script src="./script1.js"></script>
 </body>
 </html>
 
-
-
-
-
- 
-
-
-
- 

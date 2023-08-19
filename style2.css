@@ -1,98 +1,54 @@
-.e-mail, .password, .confirm_password {
-    position: relative;
-    margin: 20px;
+body{
+    background-image: linear-gradient(75deg, orangered, navy);
+    color: navy;
 }
 
-.fa-solid {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
+.main_div{
+    background-color: white;
+    padding: 3rem;
+    font-family: 'Playfair Display', serif;
+}
+
+h2{
+    text-align: center;
 }
 
 input {
-    padding-left: 30px; 
+    
     width: 300px;
     height: 30px;
-    border-radius: 50px;
+    border-left: none;
     border: none;
+    border-bottom: 1px solid navy;
     outline: none;
+    border-top: none;
+    border-right: none;
+}
+.e-mail:hover, input:hover, .password:hover, .confirm_password:hover{
+    font-size: large;
 }
 
 ::placeholder {
     color: navy;
-    padding-left: 0.5rem;
+    padding-left: 1rem;
     font-family: 'Playfair Display', serif;
 }
 
-.password:hover, .confirm_password:hover, .e-mail:hover{
-    font-size: x-large;
-}
-
-body{
-    color: white;
+.e-mail, .password, .confirm_password{
+    margin-top: 0.3rem;
     display: flex;
-    flex-direction: column;
+    margin-bottom: 1.3rem;
+    flex-direction: row-reverse;
     align-items: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: large;
-    font-family: 'Playfair Display', serif;
-    overflow: hidden;
-}
-
-.main_div{
-    background-image: linear-gradient(75deg, orangered, navy);
-    padding: 8rem;
-}
-
-header{
-    display: flex;
-    justify-content: flex-start;
-    gap: 6rem;
-    margin-bottom: 3rem;
-}
-
-header a, .reset_password a{
-    color: white;
-    text-decoration: none;
-}
-
-header a:hover, header a:active{
-    text-decoration: underline;
-}
-
-.fa-solid{
-    color: navy;
-}
-
-button{
-    font-family: 'Playfair Display', serif;
-    width: -webkit-fill-available;
-    border-radius: 50px;
-    cursor: pointer;
-    background-color: white;
-    color: navy;
-    padding: 0.4rem;
-    margin-top: 5rem;
-    font-size: larger;
-    outline: none;
-    border: none;
-}
-
-button:hover{
-    background-image: linear-gradient(75deg, navy, orangered);
-    color: white;
-    font-size: xX-large;
+    justify-content: center;
 }
 
 .last_part{
     display: flex;
-    margin-top: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 4rem;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .checkbox{
@@ -105,18 +61,66 @@ input[type="checkbox" i] {
     cursor: pointer;
 }
 
-.reset_password:hover, .checkbox:hover{
-    text-decoration: underline;
+.checkbox input{
+    accent-color: navy;
 }
 
-.sign_up,.login, .sign_up_one, .login_one{
+a{
+    text-decoration: none;;
+}
+
+a:hover, .reset_password:hover, .checkbox:hover, .login:hover, .sign_up:hover{
+    text-decoration: underline;
+    font-size: larger;
+    color: rgb(8, 8, 163);
+}
+
+button{
+    font-family: 'Playfair Display', serif;
+    width: -webkit-fill-available;
+    border-radius: 10px;
     cursor: pointer;
+    background-color: navy;
+    color: white;
+    padding: 0.4rem;
+    font-size: larger;
+    outline: none;
+    border: none;
 }
 
-.sign_up:hover, .login:hover, .sign_up_one:hover, .login_one:hover{
-    text-decoration: underline;
+button:hover{
+    background-image: linear-gradient(75deg, navy, orangered);
+    color: white;
+    font-size: x-large;
 }
 
-@media screen and (max-width: 885px){
+.login_signup{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
 
+#user_login, #user_signup{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#user_signup{
+    display: none;
+}
+
+.login, .sign_up {
+    cursor: pointer;
+    color: rgb(107, 107, 211);
+}
+
+#user_signup button{
+    margin-top: 4rem;
+}
+
+.reset_password{
+    color: rgb(107, 107, 211);
 }
