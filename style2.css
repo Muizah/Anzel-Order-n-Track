@@ -14,7 +14,6 @@ h2{
 }
 
 input {
-    
     width: 300px;
     height: 30px;
     border-left: none;
@@ -123,4 +122,10 @@ button:hover{
 
 .reset_password{
     color: rgb(107, 107, 211);
+}
+
+@media screen and (max-width: 885px) {
+    input{
+        width: 250px;
+    }
 }
