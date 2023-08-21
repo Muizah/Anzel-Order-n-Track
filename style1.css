@@ -46,7 +46,7 @@ h1{
     font-size: x-large;
 }
 
-.label{
+label{
     display: flex;
     margin-top: 1.3rem;
 }
@@ -79,23 +79,29 @@ input{
     text-decoration: underline;
 }  
 
-button{
+.main_div #staff_login{
     font-family: 'Playfair Display', serif;
     width: -webkit-fill-available;
     border-radius: 10px;
     cursor: pointer;
     background-color: navy;
     color: white;
-    padding: 0.4rem;
     font-size: larger;
     outline: none;
     border: none;
+    overflow: hidden;
+    padding: 0.5rem 0 2.5rem 0;
 }
 
 .password_reset{
     margin-bottom: 4rem;
     text-align: left;
     font-family: 'Playfair Display', serif;
+}
+
+.main_div #staff_login:hover{
+    background-image: linear-gradient(75deg, navy, orangered);
+    font-size: x-large;
 }
 
 

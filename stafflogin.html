@@ -15,21 +15,57 @@
     <div class="main_div">
         <h1>STAFF LOGIN</h1>
         <form action="">
-          <label for="username" class="label">Username</label>
+          <label for="username">Username</label>
             <div class="username">
-            <label for="username"></label>
             <i class="fa-solid fa-user"></i>
-            <input type="text" name="username" placeholder="Enter your username" required>
+            <input type="text" id="username" name="username" autocomplete="username" placeholder="Enter your username" required>
             </div>
-            <label for="password" class="label">Password</label>
-            <div class="password">
-            <label for="password"></label>
+            <label for="password">Password</label>
+            <div class="password">  
             <i class="fa-solid fa-lock"></i>
-            <input type="text" name="password" placeholder="Enter your password" required>
+            <input type="text" id="password" name="password" placeholder="Enter your password" required>
             </div>
           </form>
-          <p class="password_reset"><a href="">Forgot Password?</a></p>
-          <button type="submit">Login</button>
+          <p class="password_reset"><a href="">Forgot Password?</a></p> 
+          <input type="submit" value="Login" id="staff_login">
     </div>
+    <script type="module">
+    // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js";
+      import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-database.js";
+      // import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyCSCvI1mmnbR5aCQ5hH3kAQpRrexmGYL30",
+        authDomain: "anzel-order-n-track.firebaseapp.com",
+        projectId: "anzel-order-n-track",
+        storageBucket: "anzel-order-n-track.appspot.com",
+        messagingSenderId: "293879377235",
+        appId: "1:293879377235:web:6b2081d5d5a93d9ed505a6",
+        measurementId: "G-288WBQK2DN"
+      };
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      // const analytics = getAnalytics(app);
+    
+      // Get ref to database services
+      const db = getDatabase(app);
+    
+      document.querySelector("#staff_login").addEventListener('click', function(e){
+
+        set(ref(db, 'user/' + document.querySelector("#username").value),
+        {
+            username: document.querySelector("#username").value,
+            password: document.querySelector("#password").value
+        });
+
+            alert("Login Successful!")
+      })
+      </script>
   </body>
+</html>
   

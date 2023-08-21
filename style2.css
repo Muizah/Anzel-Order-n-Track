@@ -23,8 +23,9 @@ input {
     border-top: none;
     border-right: none;
 }
-.e-mail:hover, input:hover, .password:hover, .confirm_password:hover{
+.e-mail:hover, input:hover, .password:hover, .confirm_password:hover, .username:hover{
     font-size: large;
+    color: navy;
 }
 
 ::placeholder {
@@ -33,10 +34,10 @@ input {
     font-family: 'Playfair Display', serif;
 }
 
-.e-mail, .password, .confirm_password{
+.e-mail, .password, .confirm_password, .username{
     margin-top: 0.3rem;
     display: flex;
-    margin-bottom: 1.3rem;
+    margin-bottom: 0.2rem;
     flex-direction: row-reverse;
     align-items: center;
     justify-content: center;
@@ -74,22 +75,21 @@ a:hover, .reset_password:hover, .checkbox:hover, .login:hover, .sign_up:hover{
     color: rgb(8, 8, 163);
 }
 
-button{
+.main_div #user_login_btn, .main_div #user_signup_btn{
     font-family: 'Playfair Display', serif;
     width: -webkit-fill-available;
     border-radius: 10px;
     cursor: pointer;
     background-color: navy;
     color: white;
-    padding: 0.4rem;
+    padding: 0.5rem 0 2.5rem 0;
     font-size: larger;
     outline: none;
     border: none;
 }
 
-button:hover{
+.main_div #user_login_btn:hover, .main_div #user_signup_btn:hover{
     background-image: linear-gradient(75deg, navy, orangered);
-    color: white;
     font-size: x-large;
 }
 
@@ -123,6 +123,38 @@ button:hover{
 .reset_password{
     color: rgb(107, 107, 211);
 }
+
+.main_div #email_error, .main_div #password_error{
+    margin-bottom: 1rem;
+    margin-top: 0.1rem;
+    width: auto;
+    color:#C62828;
+    background: rgba(255, 0, 0, 0.1);
+    text-align: center;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.2rem;
+    border: 1px solid #EF9A9A;
+    display: none; 
+}
+
+.main_div #email_error1, .main_div #password_error1, .main_div #password_confirm_error{
+    margin-bottom: 1rem;
+    width: auto;
+    color:#C62828;
+    background: rgba(255, 0, 0, 0.1);
+    text-align: center;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.2rem;
+    border: 1px solid #EF9A9A;
+    display: none;
+}
+
+.error{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.3rem;
+}
+
 
 @media screen and (max-width: 885px) {
     input{
