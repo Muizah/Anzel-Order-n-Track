@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -78,8 +79,8 @@
 
                 <label for="confirmpassword">Confirm password</label>
                 <div class="confirm_password">
-                    <input type="text" name="confirm_password" placeholder="Confirm your password" id="confirmpassword"
-                        required>
+                    <input type="password" name="confirm_password" placeholder="Confirm your password"
+                        id="confirmpassword" required>
                     <i class="fa-solid fa-lock"></i>
                     <!-- <i class="fa-solid fa-eye-slash"></i> -->
                 </div>
@@ -126,6 +127,8 @@
         const passwordInput = document.querySelector('#signuppassword').value;
         const confirmPasswordInput = document.querySelector('#confirmpassword').value;
         const username = document.querySelector("#signupusername").value;
+        const userSignup = document.querySelector('#user_signup');
+        const userLogin = document.querySelector('#user_login');
 
         createUserWithEmailAndPassword(auth, emailInput, passwordInput)
             .then((userCredential) => {
@@ -137,6 +140,8 @@
                     email: emailInput,
                     password: passwordInput,
                 })
+                userSignup.style.display = "none";
+                userLogin.style.display = "block";
                 alert('User has been created!')
                 // ...
             })
@@ -163,15 +168,14 @@
 
                 const dt = new Date();
                 update(ref(database, 'users/' + user.uid), {
-                    email : loginEmail,
-                    last_login : dt,
+                    email: loginEmail,
+                    last_login: dt,
                 })
 
-                // window.location.assign("usersignup.html")
+                window.location.assign("cart.html")
                 alert('User is logged in!');
 
                 // ...
-                console.log(errorMessage)
             })
             .catch((error) => {
                 const errorCode = error.code;
