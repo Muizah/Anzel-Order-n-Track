@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -30,13 +31,13 @@
       <label for="password">Password</label>
       <div class="password">
         <i class="fa-solid fa-lock"></i>
-        <input type="text" id="password" name="password" placeholder="Enter your password" required>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
       </div>
     </form>
     <input type="submit" value="Login" id="staff_login">
   </div>
   <script type="module">
-    // Import the functions you need from the SDKs you need
+    //Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js";
     import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-database.js";
     import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-auth.js";
@@ -54,67 +55,31 @@
       appId: "1:1016468813112:web:f10bfb619f3e1568917dcd"
     };
 
-    // // Initialize Firebase
-    // const app = initializeApp(firebaseConfig);
-    // const database = getDatabase(app);
-    // const auth = getAuth();
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth();
 
-    // const staffLoginBtn = document.querySelector('#staff_login');
-    // const username = document.querySelector("#username");
-    // const email = document.querySelector('#email');
-    // const password = document.querySelector('#password');
-    // const user = auth.currentUser;
-
-
-
-
-    // staffLoginBtn.addEventListener('click', function (event) {
-
-    //   if (username.value === 'Staff' && email.value === 'cafeteria@pau.edu.ng' && password.value === 'Cafeteria Anzel') {
-    //     try {
-    //       set(ref(database, 'users/' + username.value),
-    //         {
-    //           username : username.value,
-    //           email : email.value,
-    //           password : password.value
-    //         });
-    //       window.location.assign("usersignup.html#signup_login")
-    //       alert("Login Successful!")
-    //     } catch (error) {
-    //       console.log(error)
-    //       alert("Login Failed!")
-    //     }
-    //   }
-    //   else if (username.value !== 'Staff' || email.value !== 'cafeteria@pau.edu.ng' || password.value !== 'Cafeteria Anzel') {
-    //     alert('Please enter valid login details.');
-    //     event.preventDefault();
-    //   }
-    // });
- // Initialize Firebase
- const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    const auth = getAuth(app);
-
-    // Get ref to database services
-    const db = getDatabase(app);
-
-    const form = document.querySelector('#staff_login');
+    const staffLoginBtn = document.querySelector('#staff_login');
     const username = document.querySelector("#username");
     const email = document.querySelector('#email');
     const password = document.querySelector('#password');
-    const passwordReset = document.querySelector('.password_reset');
+    const user = auth.currentUser;
 
-    form.addEventListener('click', function (event) {
+
+
+
+    staffLoginBtn.addEventListener('click', function (event) {
 
       if (username.value === 'Staff' && email.value === 'cafeteria@pau.edu.ng' && password.value === 'Cafeteria Anzel') {
         try {
-          set(ref(db, 'user/' + username.value),
+          set(ref(database, 'users/' + username.value),
             {
-              username: username.value,
-              email: email.value,
-              password: password.value
+              username : username.value,
+              email : email.value,
+              password : password.value
             });
-          window.location.assign("the staff menu ")
+          window.location.assign("usersignup.html#signup_login")
           alert("Login Successful!")
         } catch (error) {
           console.log(error)
@@ -126,7 +91,9 @@
         event.preventDefault();
       }
     });
-    
+
+   
+
   </script>
 </body>
 

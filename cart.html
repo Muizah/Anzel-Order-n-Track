@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/bc3623f5c1.js" crossorigin="anonymous"></script>
+    <script src="https://js.stripe.com/v3/"></script>
     <link rel="stylesheet" href="./cart.css" />
     <title>Anzel Order-n-Track</title>
 </head>
@@ -23,7 +24,6 @@
     </div>    
         <div class="container">
             <div id="root"></div>
-            <!-- <img src="./assets/jollof rice.png"> -->
             <div class="sidebar">
                 <div class="head"><p>My Cart</p></div>
                 <div id="cartItem">Your cart is empty</div>
@@ -31,9 +31,37 @@
                     <h3>Total</h3>
                     <h2 id="total">₦0.00</h2>
                 </div>
+                <button id="checkout">Proceed to Checkout ></button>
             </div>
-        </div>0v
+        </div>
+        
+
 </body>
+<script>
+    const stripe = Stripe(
+        "pk_test_51NiZJ0Ae8im0grhmwqRHdXenJ4q5iMn4mmdq4LmfqimjjYtLYYvbsyn5k2U9fKwhqk6OQbfHMMzfTaZ54tthoJMP00YGPtoZEZ"
+    );
+
+    document.querySelector('#checkout').addEventListener('click', function(){
+
+
+        stripe.redirectToCheckout({
+            lineItems: [
+                {
+                    price: "price_1Niah3Ae8im0grhm8AhHhz0j",
+                    quantity: 1,
+                },
+            ],
+            mode: "payment",
+            successUrl: "http://localhost:5500/usersignup.html",
+            cancelUrl: "http://localhost:5500/checkout.html", 
+    })
+    .then(function(result){
+    });
+        
+});        
+
+</script>
 <script src="./cart.js"></script>
 
 </html>
