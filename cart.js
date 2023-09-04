@@ -58,7 +58,7 @@ document.querySelector('#root').innerHTML = categories.map((item) =>
 }).join('')
 
 console.log(categories);
-console.log({...categories[0]});
+console.log({...categories[0]})
 
 var cart = [];
 

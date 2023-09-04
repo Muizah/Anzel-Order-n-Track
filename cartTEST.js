@@ -1,155 +1,161 @@
-// document.addEventListener('DOMContentLoaded', function() {
-//     const cartButton = document.querySelector('.cart');
-//     const cartCount = document.querySelector('#count');
-//     const cartItems = document.querySelector('#cartItem');
-//     const totalElement = document.querySelector('#total');
-//     const checkoutButton = document.querySelector('#checkout');
-    
-//     let cart = [];
-//     let total = 0;
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js";
+    import { getFirestore, collection, onSnapshot, doc, getDocs } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-firestore.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-auth.js";
 
-//     function updateCartDisplay() {
-//         cartCount.textContent = cart.length;
-//         cartItems.innerHTML = cart.map(item => `<div>${item.name} - ₦${item.price.toFixed(2)}</div>`).join('');
-//         totalElement.textContent = `₦${total.toFixed(2)}`;
-//     }
+    const firebaseConfig = {
+        apiKey: "AIzaSyDyVzq6usfmj6Zn5vtPjhIMTPSM9fCp42Y",
+        authDomain: "anzel-main.firebaseapp.com",
+        databaseURL: "https://anzel-main-default-rtdb.firebaseio.com",
+        projectId: "anzel-main",
+        storageBucket: "anzel-main.appspot.com",
+        messagingSenderId: "1016468813112",
+        appId: "1:1016468813112:web:f10bfb619f3e1568917dcd"
+    };
 
-//     function addToCart(item) {
-//         cart.push(item);
-//         total += item.price;
-//         updateCartDisplay();
-//     }
+    initializeApp(firebaseConfig);
+    const db = getFirestore()
+    const colRef = collection(db, 'menu')
 
-//     const itemsContainer = document.querySelector('#items');
+    async function getAllDataOnce() {
+        const querySnapshot = await getDocs(collection(db, "menu"));
+        var menu = [];
+        querySnapshot.forEach(doc => {
+            menu.push(doc.data());
+        });
+        addAllItemsToDiv(menu);
+    }
 
-//     // This function is called when the "Add to cart" button is clicked
-//     function handleAddToCartClick(event) {
-//         const productDiv = event.currentTarget.parentElement;
-//         const productName = productDiv.querySelector('name').textContent;
-//         const productPrice = parseFloat(productDiv.querySelector('price').textContent);
-//         const productImage = productDiv.querySelector('img').src;
+    window.onload = getAllDataOnce;
 
-//         const item = {
-//             name: productName,
-//             price: productPrice,
-//             image: productImage
-//         };
+    async function getAllDataRealtime() {
+        document.querySelector('#items').innerHTML = "";
+        menuNo = 0;
+        const dbRef = collection(db, "menu");
+        onSnapshot(dbRef, (querySnapshot) => {
+            var menu = [];
+            querySnapshot.forEach(doc => {
+                menu.push(doc.data());
+            });
+            addAllItemsToDiv(menu);
+        });
+    }
 
-//         addToCart(item);
-//     }
+    window.onload = getAllDataRealtime;
 
-//     // Attach click event listeners to "Add to cart" buttons
-//     const addToCartButtons = document.querySelectorAll('add');
-//     addToCartButtons.forEach(button => {
-//         button.addEventListener('click', handleAddToCartClick);
-//     });
-
-//     // ... (other code)
-//     console.log('Add to cart');
-  
-// });
-
-
-
-
-
-// var cart = [];
-
-// function addtocart(a) {
-//   cart.push({...categories[a]});
-//   displaycart();
-// }
-
-// function delElement(a){
-//   cart.splice(a, 1);
-//   displaycart();
-// }
-
-// function displaycart(a){
-//   let j = 0, total = 0;
-//   document.querySelector('#count').innerHTML =cart.length;
-//   if(cart.length == 0){
-//       document.querySelector('#cartItem').innerHTML = "Your cart is empty";
-//       document.querySelector('#total').innerHTML = "₦ "+0+" .00";
-//   }
-//   else{
-//       document.querySelector('#cartItem').innerHTML = cart.map((items) =>
-//       {
-//           var{image, title, price, quantity} = items;
-//           total += price;
-//           document.querySelector('#total').innerHTML = "₦ "+total+" .00";
-//           return(
-//               `<div class='cart-item'>
-//                   <div class='row-img'>
-//                       <img class='rowimg' src=${image}>
-//                   </div>
-//                   <p style = 'font-size: 12px;'>${title}</p>
-//                   <h2 style = 'font-size: 15px;'>₦ ${price}.00</h2>` +
-//                   "<i class='fa-solid fa-trash' onclick = 'delElement("+ (j++) +")'></i></div>"
-//           );        
-//           }).join('');
-//   }    
-     
-// }
+    // function getAllDataOnce() {
+    //     onSnapshot(colRef, (snapshot) => {
+    //         const menu = [];
+    //         snapshot.docs.forEach((doc) => {
+    //             menu.push({ ...doc.data(), id: doc.id })
+    //         });
+    //         addAllItemsToDiv(menu);
+    //     });
+    // }
 
 
+    // function getAllDataRealtime() {
+    //     onSnapshot(colRef, (snapshot) => {
+    //         let menu = []
+    //         snapshot.docs.forEach((doc) => {
+    //             menu.push({ ...doc.data(), id: doc.id })
+    //         })
+    //         console.log(snapshot);
+    //         console.log(menu);
+    //     });
+    // }
+
+    var menuNo = 0;
+    var items = document.querySelector('#items');
+    const cartItems = document.querySelector('#cartItem');
+    const total = document.querySelector('#total');
+    let cart = [];
+
+    function addItem(image, name, quantity, price) {
+        const newDiv = document.createElement('div');
+        const itemTwo = document.createElement('img');
+        const itemThree = document.createElement('p');
+        const itemFour = document.createElement('p');
+        const itemFive = document.createElement('p');
+        const itemSix = document.createElement('button');
 
 
+        itemTwo.setAttribute('src', image);
+        itemThree.innerHTML = name;
+        itemFour.innerHTML = price;
+        itemFive.innerHTML = '₦' + quantity;
+        itemSix.innerHTML = 'Add to cart';
+
+        itemFive.classList.add('itemFive');
+        itemSix.classList.add('add');
 
 
+        itemSix.addEventListener('click', () => {
+            addToCart({ name, price, image, quantity });
+        });
 
 
+        newDiv.appendChild(itemTwo);
+        newDiv.appendChild(itemThree);
+        newDiv.appendChild(itemFour);
+        newDiv.appendChild(itemFive);
+        newDiv.appendChild(itemSix);
 
+        items.appendChild(newDiv);
+    }
 
+    function addAllItemsToDiv(menuDocsLIst) {
+        menuNo = 0;
+        items.innerHTML = "";
+        menuDocsLIst.forEach(element => {
+            addItem(element.Image, element.Name, element.Price, element.Quantity)
+        });
+    };
+    function addToCart(item) {
+        cart.push(item);
+        updateCartDisplay();
+    }
 
+    function delElement(index) {
+        cart.splice(index, 1);
+        updateCartDisplay();
+    }
 
+    function updateCartDisplay(a) {
+        let j = 0, total = 0;
+        document.querySelector('#count').innerHTML = cart.length;
+        if (cart.length == 0) {
+            document.querySelector('#cartItem').innerHTML = "Your cart is empty";
+            document.querySelector('#total').innerHTML = "₦ " + 0 + " .00";
+        }
+        else {
+            const cartItemContainer = document.querySelector('#cartItem');
+            cartItemContainer.innerHTML = "";
 
+            cart.forEach((item, index) => {
+                var { image, name, price, quantity } = item;
+                total += parseInt(quantity);
 
+                document.querySelector('#total').innerHTML = "₦ " + total + " .00";
 
+                const cartItemDiv = document.createElement('div');
+                cartItemDiv.classList.add('cart-item');
 
+                cartItemDiv.innerHTML = `
+                <div class='row-img'>
+                    <img class='rowimg' src=${image}>
+                </div>
+                <p style='font-size: 17px; color: navy; font-weight: 800;'>${name}</p>
+                <h2 style='font-size: 15px; color: navy;'>₦${quantity}.00</h2>
+                <i class='fa-solid fa-trash'></i>
+            `;
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     const cartButton = document.querySelector('.cart');
-//     const cartCount = document.querySelector('#count');
-//     const cartItems = document.querySelector('#cartItem');
-//     const totalElement = document.querySelector('#total');
-//     const checkoutButton = document.querySelector('#checkout');
-    
-//     let cart = [];
-//     let total = 0;
+                const trashIcon = cartItemDiv.querySelector('.fa-trash');
+                trashIcon.addEventListener('click', () => {
+                    cart.splice(index, 1);
+                    updateCartDisplay();
+                });
 
-//     function updateCartDisplay() {
-//         cartCount.textContent = cart.length;
-//         var numericPrice = parseFloat(item.price);
-//         var numericTotal = parseFloat(total.price);
-//         cartItems.innerHTML = cart.map(item => `<div>${item.name} - ₦${numericPrice.toFixed(2)}</div>`).join('');
-//         // console.log(typeof(numericPrice))
-//         totalElement.textContent = `₦${numericTotal.toFixed(2)}`;
-//         // console.log(typeof(numericTotal));
-//     }
-
-//     function addToCart(item) {
-//         cart.push(item);
-//         total += item.price;
-//         updateCartDisplay();
-//     }
-
-//     cartButton.addEventListener('click', function() {
-//         // Implement cart dropdown or modal if needed
-//         console.log('Cart clicked');
-//     });
-
-//     checkoutButton.addEventListener('click', function() {
-//         // Implement checkout logic if needed
-//         console.log('Checkout clicked');
-//     });
-
-//     // Sample usage of adding items to the cart
-//     // Replace this with your actual logic
-//     const item = {
-//         name: 'beeff',
-//         price: 200, 
-//     };
-
-//     addToCart(item);
-// });
+                cartItemContainer.appendChild(cartItemDiv);
+            });
+        }
+    }

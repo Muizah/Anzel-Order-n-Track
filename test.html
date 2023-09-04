@@ -14,6 +14,8 @@
     <title>Anzel Order-n-Track</title>
 </head>
 
+
+
 <body>
     <div class="header">
         <p class="logo">MENU</p>
@@ -51,7 +53,7 @@
                     <input type="file" accept="image/*" id="ImageMod">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="AddModBtn" class="btn btn-primary" onclick="AddItm()">Add</button>
+                    <button type="button" id="AddModBtn" class="btn btn-primary" onclick="addItm()">Add</button>
                     <button type="button" id="UpdModBtn" class="btn btn-success" onclick="UpdItem()">Update</button>
                     <button type="button" id="DelModBtn" class="btn btn-danger" onclick="DelItem()">Delete</button>
                 </div>
@@ -60,35 +62,48 @@
     </div>
 
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        var modName = document.querySelector('#NameMod');
+        var modPrice = document.querySelector('#PriceMod');
+        var modQuantity = document.querySelector('#QuantityMod');
+        var modImage = document.querySelector('#ImageMod');
+
+        var BTNmodAdd = document.querySelector('#AddModBtn');
+        var BTNmodUpd = document.querySelector('#UpdModBtn');
+        var BTNmodDel = document.querySelector('#DelModBtn');
+
+        var menuList = [];
+
+    </script>
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js";
+        import { getFirestore, collection, onSnapshot, getDocs, getDoc, setDoc, updateDoc, deleteField, addDoc, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-firestore.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-auth.js";
     
-<script type="module" id="MainScript">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js";
-    import { getFirestore, collection, onSnapshot,getDocs, getDoc, setDoc, updateDoc, deleteField, addDoc, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-firestore.js";
-    import { getAuth } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-auth.js";
-
-    const firebaseConfig = {
-        apiKey: "AIzaSyDyVzq6usfmj6Zn5vtPjhIMTPSM9fCp42Y",
-        authDomain: "anzel-main.firebaseapp.com",
-        databaseURL: "https://anzel-main-default-rtdb.firebaseio.com",
-        projectId: "anzel-main",
-        storageBucket: "anzel-main.appspot.com",
-        messagingSenderId: "1016468813112",
-        appId: "1:1016468813112:web:f10bfb619f3e1568917dcd"
-    };
-
-    initializeApp(firebaseConfig)
-    const db = getFirestore()
-
-    async function getAllDataOnce() {
+        const firebaseConfig = {
+            apiKey: "AIzaSyDyVzq6usfmj6Zn5vtPjhIMTPSM9fCp42Y",
+            authDomain: "anzel-main.firebaseapp.com",
+            databaseURL: "https://anzel-main-default-rtdb.firebaseio.com",
+            projectId: "anzel-main",
+            storageBucket: "anzel-main.appspot.com",
+            messagingSenderId: "1016468813112",
+            appId: "1:1016468813112:web:f10bfb619f3e1568917dcd"
+        };
+    
+        initializeApp(firebaseConfig)
+        const db = getFirestore()
+    
+        async function getAllDataOnce() {
             const querySnapshot = await getDocs(collection(db, "menu"));
             var menu = [];
             querySnapshot.forEach(doc => {
@@ -96,9 +111,9 @@
             });
             addAllItemsToDiv(menu);
         }
-
+    
         window.onload = getAllDataOnce;
-
+    
         async function getAllDataRealtime() {
             document.querySelector('#items').innerHTML = "";
             menuNo = 0;
@@ -111,82 +126,110 @@
                 addAllItemsToDiv(menu);
             });
         }
-
+    
         window.onload = getAllDataRealtime;
-
-    var menuNo = 0;
-    var items = document.querySelector('#items');
-    var menuList = [];
-
-    function addItem(image, name, quantity, price) {
-        const newDiv = document.createElement('div');
-        const itemOne = document.createElement('sn.div');
-        const itemTwo = document.createElement('img');
-        const itemThree = document.createElement('name');
-        const itemFour = document.createElement('quantity');
-        const itemFive = document.createElement('price');
-        menuList.push([name, price, quantity, image]);
-
-        itemOne.innerHTML = ++menuNo;
-        itemTwo.setAttribute('src', image);
-        itemThree.innerHTML = name;
-        itemFour.innerHTML = price;
-        itemFive.innerHTML = quantity;
-
-        newDiv.appendChild(itemOne);
-        newDiv.appendChild(itemTwo);
-        newDiv.appendChild(itemThree);
-        newDiv.appendChild(itemFour);
-        newDiv.appendChild(itemFive);
-
-        var controlDiv = document.createElement('control_div');
-        controlDiv.innerHTML = '<button type="button" class="btn btn-primary my-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="FillTboxes(null)">Add</button>'
-        controlDiv.innerHTML += '<button type="button" class="btn btn-primary my-2 ml-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="FillTboxes(' + menuNo + ')">Edit</button>'
-
-        newDiv.appendChild(controlDiv);
-        items.appendChild(newDiv);
-    }
-
-    function addAllItemsToDiv(menuDocsLIst) {
-        items.innerHTML = "";
-        menuDocsLIst.forEach(element => {
-            addItem(element.Image, element.Name, element.Price, element.Quantity)
-        });
-    }
-    window.onload = getAllDataOnce;
-
-    var modName = document.querySelector('#NameMod');
-    var modPrice = document.querySelector('#PriceMod');
-    var modQuantity = document.querySelector('#QuantityMod');
-    var modImage = document.querySelector('#ImageMod');
-
-    var BTNmodAdd = document.querySelector('#AddModBtn');
-    var BTNmodUpd = document.querySelector('#UpdModBtn');
-    var BTNmodDel = document.querySelector('#DelModBtn');
-
-    function FillTboxes(index) {
-        if (index == null) {
-            modName.value = "";
-            modPrice.value = "";
-            modQuantity.value = "";
-            modImage.value = "";
-            BTNmodAdd.style.display = 'inline-block';
-            BTNmodUpd.style.display = 'none';
-            BTNmodDel.style.display = 'none';
+    
+        var menuNo = 0;
+        var items = document.querySelector('#items');
+        var menuList = [];
+    
+        function addItem(image, name, quantity, price) {
+            const newDiv = document.createElement('div');
+            const itemOne = document.createElement('sn.div');
+            const itemTwo = document.createElement('img');
+            const itemThree = document.createElement('name');
+            const itemFour = document.createElement('quantity');
+            const itemFive = document.createElement('price');
+            menuList.push([name, price, quantity, image]);
+    
+    
+            itemOne.innerHTML = ++menuNo;
+            itemTwo.setAttribute('src', image);
+            itemThree.innerHTML = name;
+            itemFour.innerHTML = price;
+            itemFive.innerHTML = quantity;
+    
+            newDiv.appendChild(itemOne);
+            newDiv.appendChild(itemTwo);
+            newDiv.appendChild(itemThree);
+            newDiv.appendChild(itemFour);
+            newDiv.appendChild(itemFive);
+    
+            var controlDiv = document.createElement('control_div');
+            controlDiv.innerHTML = '<button type="button" class="btn btn-primary my-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="FillTboxes(null)">Add</button>'
+            controlDiv.innerHTML += '<button type="button" class="btn btn-primary my-2 ml-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="FillTboxes(' + menuNo + ')">Edit</button>'
+    
+            newDiv.appendChild(controlDiv);
+            items.appendChild(newDiv);
         }
-        else {
-            --index;
-            modName.value = menuList[index][0];
-            modPrice.value = menuList[index][1];
-            modQuantity.value = menuList[index][2];
-            modImage.value = menuList[index][3];
-            BTNmodAdd.style.display = 'none';
-            BTNmodUpd.style.display = 'inline-block';
-            BTNmodDel.style.display = 'inline-block';
+    
+        function addAllItemsToDiv(menuDocsLIst) {
+            items.innerHTML = "";
+            menuDocsLIst.forEach(element => {
+                addItem(element.Image, element.Name, element.Price, element.Quantity)
+            });
         }
-    }
+        window.onload = getAllDataOnce;
+    
+        function FillTboxes(index) {
+            if (index == null) {
+                modName.value = "";
+                modPrice.value = "";
+                modQuantity.value = "";
+                modImage.value = "";
+                BTNmodAdd.style.display = 'inline-block';
+                BTNmodUpd.style.display = 'none';
+                BTNmodDel.style.display = 'none';
+            }
+            else {
+                --index;
+                console.log(menuList)
+                modName.value = menuList[index][0];
+                modPrice.value = menuList[index][1];
+                modQuantity.value = menuList[index][2];
+                modImage.value = menuList[index][3];
+                BTNmodAdd.style.display = 'none';
+                BTNmodUpd.style.display = 'inline-block';
+                BTNmodDel.style.display = 'inline-block';
+            }
+        }
 
-    function addItm() {
+    
+        // var modName = document.querySelector('#NameMod');
+        // var modPrice = document.querySelector('#PriceMod');
+        // var modQuantity = document.querySelector('#QuantityMod');
+        // var modImage = document.querySelector('#ImageMod');
+    
+        // var BTNmodAdd = document.querySelector('#AddModBtn');
+        // var BTNmodUpd = document.querySelector('#UpdModBtn');
+        // var BTNmodDel = document.querySelector('#DelModBtn');
+    
+        // var menuList = [];
+    
+        // function FillTboxes(index) {
+        // if (index == null) {
+        //     modName.value = "";
+        //     modPrice.value = "";
+        //     modQuantity.value = "";
+        //     modImage.value = "";
+        //     BTNmodAdd.style.display = 'inline-block';
+        //     BTNmodUpd.style.display = 'none';
+        //     BTNmodDel.style.display = 'none';
+        // }
+        // else {
+        //     --index;
+        //     console.log(menuList)
+        //     modName.value = menuList[index][0];
+        //     modPrice.value = menuList[index][1];
+        //     modQuantity.value = menuList[index][2];
+        //     modImage.value = menuList[index][3];
+        //     BTNmodAdd.style.display = 'none';
+        //     BTNmodUpd.style.display = 'inline-block';
+        //     BTNmodDel.style.display = 'inline-block';
+        // }
+        // }
+    
+        function addItm() {
             firebase.database().ref("menu/" + modName.value).set(
                 {
                     Name: modName.value,
@@ -206,7 +249,7 @@
                 }
             )
         }
-
+    
         function UpdItem() {
             firebase.database().ref("menu/" + modName.value).update(
                 {
@@ -227,7 +270,7 @@
                 }
             )
         }
-
+    
         function DelItem() {
             firebase.database().ref("menu/" + modName.value).remove().then(
                 function () {
@@ -237,9 +280,7 @@
                 }
             )
         }
-
-
-</script>
+    </script>
 </body>
 
 
