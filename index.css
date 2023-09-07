@@ -90,6 +90,14 @@ body{
     background-image: linear-gradient(75deg, orangered, navy);
 }
 
+footer{
+    color: navy;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 42%;
+}
+
 @media screen and (max-width: 885px) {
     .main_div{
         flex-direction: column;

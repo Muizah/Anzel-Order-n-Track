@@ -1,12 +1,12 @@
 *{
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Playfair Display', serif;
-  font-size: 18px;
-}
-
-body{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+  }
+  
+  body{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -62,13 +62,6 @@ body{
     margin-bottom: 30px;
 }
 
-#root{
-    width: 60%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
-}
-
 .sidebar{
     width: 40%;
     border-radius: 5px;
@@ -101,47 +94,6 @@ body{
     border-top: 1px solid #eee;
 }
 
-.box{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid navy;
-    border-radius: 5px;
-    padding: 15px;
-}
-
-.img-box{
-    width: 100%;
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.images{
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.bottom{
-    margin-top: 20px;
-    width: 100%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 110px;
-}
-
-h2{
-    font-size: 20px;
-    color: orangered;
-}
-
 button{
     width:100%;
     position: relative;
@@ -161,6 +113,93 @@ button:hover{
     color: white;
 }
 
+#checkout{
+    text-decoration: none;
+    color: navy;
+    font-size: 18px;
+    padding: 1rem;
+    border: 1px solid transparent;
+    background-color: white;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+
+#checkout:hover{
+    font-size: larger;
+    border: 5px solid navy
+}
+
+#items{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    align-content: center;
+    width: 70%;
+}
+
+img{
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: cover;
+    object-position: center;
+}
+
+#items div{
+    border: 1px solid navy;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+    justify-items: center;
+    padding: 15px;
+}
+
+button{
+    width: 100%;
+    position: relative;
+    border: none;
+    border-radius: 5px;
+    background-color: navy;
+    padding: 7px 25px;
+    cursor: pointer;
+    color: white;
+    text-align: center;
+}
+
+button:hover{
+    background-color: orangered;
+}
+
+p{
+    margin-bottom: 0.2rem;
+    margin-top: 0.5rem;
+    font-size: 20px;
+    color: navy;
+    font-size: 20px;
+}
+
+.itemFive {
+    color: orangered;
+    font-weight: bold;
+}
+
+#cartItem img{
+    width: 100%;
+    border-radius: 60%;
+    border: 3px solid navy;
+}
+
+.box{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: white;
+    color: navy;
+    flex-direction: row-reverse;
+    padding: 0.3rem 1.3rem;
+    margin-bottom: 1rem;
+}
+
 .cart-item{
     display: flex;
     align-items: center;
@@ -176,7 +215,6 @@ button:hover{
     width: 50px;
     height: 50px;
     border-radius: 50px;
-    border: 1px solid navy;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -194,18 +232,11 @@ button:hover{
 
 }
 
-#checkout{
-    text-decoration: none;
+footer{
     color: navy;
-    font-size: 18px;
-    padding: 1rem;
-    border: 1px solid transparent;
-    background-color: white;
-    border-radius: 1rem;
-    margin-bottom: 1rem;
-}
-
-#checkout:hover{
-    font-size: larger;
-    border: 5px solid navy
+    bottom: 0;
+    width: 100%;
+    left: 42%;
+    display: flex;
+    justify-content: center;
 }
