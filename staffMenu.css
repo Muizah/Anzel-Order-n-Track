@@ -146,6 +146,17 @@ footer{
     width: 100%;
     left: 42%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 0 3.3rem;
     margin-top: 3rem;
+}
+
+footer button{
+    width: 18%;
+    background-color: orangered;
+    font-size: larger;
+}
+
+footer button:hover{
+    background-color: navy;
 }

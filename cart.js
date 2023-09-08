@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js";
-import { getFirestore, collection, onSnapshot, doc, getDocs } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-firestore.js";
+import { getFirestore, collection, onSnapshot, doc, getDocs, updateDoc } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-firestore.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -29,7 +29,6 @@ window.onload = getAllDataOnce;
 
 async function getAllDataRealtime() {
     document.querySelector('#items').innerHTML = "";
-    menuNo = 0;
     const dbRef = collection(db, "menu");
     onSnapshot(dbRef, (querySnapshot) => {
         var menu = [];
@@ -42,7 +41,6 @@ async function getAllDataRealtime() {
 
 window.onload = getAllDataRealtime;
 
-var menuNo = 0;
 var items = document.querySelector('#items');
 const cartItems = document.querySelector('#cartItem');
 const total = document.querySelector('#total');
@@ -82,12 +80,12 @@ function addItem(image, name, quantity, price) {
 }
 
 function addAllItemsToDiv(menuDocsLIst) {
-    menuNo = 0;
     items.innerHTML = "";
     menuDocsLIst.forEach(element => {
         addItem(element.Image, element.Name, element.Price, element.Quantity)
     });
 };
+
 function addToCart(item) {
     cart.push(item);
     updateCartDisplay();
@@ -146,5 +144,8 @@ function updateCartDisplay(a) {
     }
 }
 
+const checkoutBtn = document.querySelector('#checkout');
+checkoutBtn.addEventListener('click', async () => {
 
-
+    window.location.assign("checkout.html");
+});

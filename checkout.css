@@ -1,0 +1,50 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  background-image: linear-gradient(75deg, orangered, navy);
+  height: 60rem;
+  font-family: "Playfair Display", serif;
+}
+
+.main_div {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 1.7rem;
+  background-size: cover;
+  font-family: "Playfair Display", serif;
+  font-size: large;
+  color: navy;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+}
+
+img {
+  width: 50%;
+  height: 50%;
+}
+
+p{
+    width: 75%;
+}
+
+footer{
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 42%;
+}

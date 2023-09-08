@@ -40,9 +40,22 @@
     </div>
 </body>
 <script src="cart.js" type="module"></script>
+<!-- <script>
+    const checkoutBtn = document.querySelector('#checkout');
+    checkoutBtn.addEventListener('click', () => {
+        cart.forEach(item => {
+            const menuItem = foodItems.find(foodItem => foodItem.name === item.name);
+            if (menuItem) {
+                menuItem.quantity -= item.quantity;
+            }
+        });
+        window.location.assign("checkout.html")
+    });
+</script> -->
+
 </html>
 <footer>
     <p>
         © 2023 Anzel. All Rights Reserved
     </p>
-  </footer>
+</footer>
