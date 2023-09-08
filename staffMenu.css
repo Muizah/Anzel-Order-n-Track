@@ -147,6 +147,7 @@ footer{
     left: 42%;
     display: flex;
     justify-content: space-between;
+    flex-direction: row-reverse;
     padding: 0 3.3rem;
     margin-top: 3rem;
 }
@@ -159,4 +160,33 @@ footer button{
 
 footer button:hover{
     background-color: navy;
+}
+
+@media screen and (max-width: 885px) {
+    body{
+        padding: 0 2rem 1rem 2rem;
+    }
+    
+    .main, .header{
+        width: 100%;
+    }
+
+    #items {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    footer{
+        left: 21%;
+        margin-top: 2rem;
+        flex-direction: column;
+    }
+
+    footer button{
+        width: auto;
+        margin-bottom: 1rem;
+    }
+
+    h6{
+        font-size: 12px;
+    }
 }

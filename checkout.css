@@ -48,3 +48,21 @@ footer{
     width: 100%;
     left: 42%;
 }
+
+@media screen and (max-width: 885px) {
+    .main_div{
+        width: 90%;
+    }
+
+    .main_div h1{
+        font-size: 29px;
+    }
+
+    img{
+        width: 100%;
+    }
+
+    footer{
+        left: 20%;
+    }
+}

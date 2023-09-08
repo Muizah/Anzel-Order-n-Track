@@ -186,11 +186,5 @@ function UpdItem(documentId) {
 const logoutButton = document.querySelector('#logout');
 
     logoutButton.addEventListener('click', () => {
-        firebase.auth().signOut().then(() => {
-            // Sign-out successful.
-            console.log('User logged out');
-        }).catch((error) => {
-            // An error happened.
-            console.error(error);
-        });
+        window.location.assign("stafflogin.html"); 
     });

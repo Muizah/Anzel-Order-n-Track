@@ -60,6 +60,7 @@ button{
     border-radius: 20rem;
     font-size: large;
     font-family: 'Playfair Display', serif;
+    border: none;
 }
 
 button:hover{
@@ -113,5 +114,9 @@ footer{
 
     .right_div{
         height: 28rem;
+    }
+
+    footer{
+        left: 20%;
     }
 }

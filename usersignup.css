@@ -148,4 +148,12 @@ footer{
     input{
         width: 250px;
     }
+
+    #user_signup{
+        padding: 1.2rem;
+    }
+
+    footer{
+        left: 20%;
+    }
 }
