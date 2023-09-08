@@ -146,6 +146,9 @@ function updateCartDisplay(a) {
 
 const checkoutBtn = document.querySelector('#checkout');
 checkoutBtn.addEventListener('click', async () => {
-
-    window.location.assign("checkout.html");
+    if (cart.length > 0) {
+        window.location.assign("checkout.html");
+    } else {
+        alert("Your cart is empty. Please add items before proceeding.");
+    }
 });
