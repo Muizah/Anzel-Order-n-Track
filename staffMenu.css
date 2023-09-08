@@ -176,8 +176,7 @@ footer button:hover{
     }
 
     footer{
-        left: 21%;
-        margin-top: 2rem;
+        justify-content: center;
         flex-direction: column;
     }
 

@@ -37,32 +37,29 @@ img {
   height: 50%;
 }
 
-p{
-    width: 75%;
+p {
+  width: 75%;
 }
 
-footer{
-    color: white;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    left: 42%;
+footer {
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 @media screen and (max-width: 885px) {
-    .main_div{
-        width: 90%;
-    }
+  .main_div {
+    width: 90%;
+  }
 
-    .main_div h1{
-        font-size: 29px;
-    }
+  .main_div h1 {
+    font-size: 29px;
+  }
 
-    img{
-        width: 100%;
-    }
-
-    footer{
-        left: 20%;
-    }
+  img {
+    width: 100%;
+  }
 }

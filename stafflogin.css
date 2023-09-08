@@ -5,115 +5,113 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  
 }
 
-body{
-    background-image: linear-gradient(75deg, orangered, navy);
-    height: 60rem;
-    font-family: 'Playfair Display', serif;
+body {
+  background-image: linear-gradient(75deg, orangered, navy);
+  height: 60rem;
+  font-family: "Playfair Display", serif;
 }
 
-.main_div{
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    padding: 3rem;
-    font-family: 'Marck Script', cursive;
-    background-size: cover;
-    font-family: 'Playfair Display', serif;
-    font-size: large;
-    color: navy; 
-} 
-
-.username, .password, .email{
-    margin-top: 0.5rem;
-    display: flex;
-    margin-bottom: 1.3rem;
-    align-items: center;
-    justify-content: center;
+.main_div {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 3rem;
+  font-family: "Marck Script", cursive;
+  background-size: cover;
+  font-family: "Playfair Display", serif;
+  font-size: large;
+  color: navy;
 }
 
-h1{
-    margin-bottom: 1.5rem;
+.username,
+.password,
+.email {
+  margin-top: 0.5rem;
+  display: flex;
+  margin-bottom: 1.3rem;
+  align-items: center;
+  justify-content: center;
 }
 
-.username:hover, .password:hover, .email:hover{
-    font-size: x-large;
+h1 {
+  margin-bottom: 1.5rem;
 }
 
-label{
-    display: flex;
-    margin-top: 1.3rem;
+.username:hover,
+.password:hover,
+.email:hover {
+  font-size: x-large;
 }
 
-input{
-    width: 300px;
-    height: 30px;
-    border-left: none;
-    border: none;
-    border-bottom: 1px solid navy;
-    outline: none;
-    border-top: none;
-    border-right: none;
-    margin-left: 0.2rem;
+label {
+  display: flex;
+  margin-top: 1.3rem;
 }
 
-input:hover{
-    font-size: large;
+input {
+  width: 300px;
+  height: 30px;
+  border-left: none;
+  border: none;
+  border-bottom: 1px solid navy;
+  outline: none;
+  border-top: none;
+  border-right: none;
+  margin-left: 0.2rem;
+}
+
+input:hover {
+  font-size: large;
 }
 
 ::placeholder {
-    color: navy;
-    font-family: 'Playfair Display', serif;
-    padding-left: 0.8rem;
+  color: navy;
+  font-family: "Playfair Display", serif;
+  padding-left: 0.8rem;
 }
 
-.password_reset a{
-    color: rgb(8, 8, 163);
-    text-decoration: none;
+.password_reset a {
+  color: rgb(8, 8, 163);
+  text-decoration: none;
 }
 
-.password_reset a:hover{
-    font-size: larger;
-    text-decoration: underline;
-}  
-
-.main_div #staff_login{
-    font-family: 'Playfair Display', serif;
-    width: -webkit-fill-available;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: navy;
-    color: white;
-    font-size: larger;
-    outline: none;
-    border: none;
-    overflow: hidden;
-    padding: 0.5rem 0 2.5rem 0;
-    margin-top: 2rem;
+.password_reset a:hover {
+  font-size: larger;
+  text-decoration: underline;
 }
 
-.main_div #staff_login:hover{
-    background-image: linear-gradient(75deg, navy, orangered);
-    font-size: x-large;
+.main_div #staff_login {
+  font-family: "Playfair Display", serif;
+  width: -webkit-fill-available;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: navy;
+  color: white;
+  font-size: larger;
+  outline: none;
+  border: none;
+  overflow: hidden;
+  padding: 0.5rem 0 2.5rem 0;
+  margin-top: 2rem;
 }
 
-footer{
-    color: white;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    left: 42%;
+.main_div #staff_login:hover {
+  background-image: linear-gradient(75deg, navy, orangered);
+  font-size: x-large;
 }
 
-@media screen and (max-width: 885px) {
-    footer{
-        left: 20%;
-    }
+footer {
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
