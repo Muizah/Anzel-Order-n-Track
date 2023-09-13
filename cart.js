@@ -167,11 +167,42 @@ function updateCartDisplay(a) {
 
 
 const checkoutBtn = document.querySelector('#checkout');
-// Event listener for checkout button click
 checkoutBtn.addEventListener('click', async () => {
     if (cart.length > 0) {
-        window.location.assign("checkout.html");
+        const totalAmount = getTotalAmountFromCart();
+
+        var handler = PaystackPop.setup({
+            key: 'pk_test_9f6809ab3f16f06a20deeb2178fdc462830efb21',
+            email: 'mapampa7@gmail.com',
+            amount: totalAmount * 100, // Amount in kobo (N2000)
+            currency: 'NGN',
+            ref: 'ABFDEFW32456', // Unique reference for the transaction
+            callback: function (response) {
+                alert('Payment complete! Reference: ' + response.reference);
+                window.location.href = 'checkout.html';
+            },
+            onClose: function () {
+                alert('Payment window closed.');
+                
+            }
+        });
+        handler.openIframe();
     } else {
         alert("Your cart is empty. Please add items before proceeding.");
     }
 });
+
+
+
+function getTotalAmountFromCart() {
+    // Initialize total amount to 0
+    let totalAmount = 0;
+
+    // Loop through each item in the cart
+    cart.forEach(item => {
+        // Add the price of the item to the total amount
+        totalAmount += parseInt(item.price);
+    });
+
+    return totalAmount;
+}
