@@ -176,7 +176,7 @@ checkoutBtn.addEventListener('click', async () => {
             email: 'mapampa7@gmail.com',
             amount: totalAmount * 100, // Amount in kobo (N2000)
             currency: 'NGN',
-            ref: 'ABFDEFW32456', // Unique reference for the transaction
+            ref: 'ABFDEFW3456', // Unique reference for the transaction
             callback: function (response) {
                 alert('Payment complete! Reference: ' + response.reference);
                 window.location.href = 'checkout.html';
