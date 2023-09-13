@@ -49,7 +49,7 @@ const total = document.querySelector('#total');
 let cart = [];
 
 // Function to add an item to the menu list in the DOM
-function addItem(image, name, quantity, price, itemId) {
+function addItem(image, name, price, quantity, itemId) {
     // Create HTML elements
     const newDiv = document.createElement('div');
     const itemTwo = document.createElement('img');
@@ -61,8 +61,8 @@ function addItem(image, name, quantity, price, itemId) {
     // Set attributes and content
     itemTwo.setAttribute('src', image);
     itemThree.innerHTML = name;
-    itemFour.innerHTML = price;
-    itemFive.innerHTML = '₦' + quantity;
+    itemFour.innerHTML = '₦' + price;
+    itemFive.innerHTML = quantity;
     itemSix.innerHTML = 'Add to cart';
 
     itemSix.setAttribute('data-item-id', itemId);
@@ -76,7 +76,7 @@ function addItem(image, name, quantity, price, itemId) {
         const name = itemThree.innerHTML;
         const itemId = event.target.dataset.itemId;
 
-        addToCart({ name, price, image, quantity });
+        addToCart({ name, price, image, quantity, itemId });
 
         const itemRef = doc(db, "menu", itemId);
 
@@ -128,7 +128,7 @@ function updateCartDisplay(a) {
 
         cart.forEach(async (item, index) => {
             var { image, name, price, quantity, itemId } = item;
-            total += parseInt(quantity);
+            total += parseInt(price);
 
             document.querySelector('#total').innerHTML = "₦ " + total + " .00";
 
@@ -140,46 +140,26 @@ function updateCartDisplay(a) {
                     <img class='rowimg' src=${image}>
                 </div>
                 <p style='font-size: 17px; color: navy; font-weight: 800;'>${name}</p>
-                <h2 style='font-size: 15px; color: navy;'>₦${quantity}.00</h2>
+                <h2 style='font-size: 15px; color: navy;'>₦${price}.00</h2>
                 <i class='fa-solid fa-trash'></i>
             `;
 
-
-
             const trashIcon = cartItemDiv.querySelector('.fa-trash');
             trashIcon.addEventListener('click', async (event) => {
+                const itemId = item.itemId; // Get the item ID from the item
+                const itemRef = doc(db, "menu", itemId);
+                const updatedQuantity = increment(1);  // Increment quantity
+
                 try {
-                    const dbRef = collection(db, "menu");
-                    const initialSnapshot = await getDocs(dbRef);
-                    const menu = initialSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-
-                    for (const item of menu) {
-                        const id = item.id;
-                        console.log(item.id)
-                        const itemRef = doc(db, "menu", id);
-
-                        // Increment the quantity by 1
-                        const newQuantity = item.Quantity + 1;
-
-                        // Update the quantity in Firestore
-                        await updateDoc(itemRef, { Quantity: newQuantity });
-
-                        console.log(`Item '${id}' quantity incremented to ${newQuantity}`);
-
-                        // Remove the item from the cart
-                        const itemIndex = cart.findIndex(item => item.id === itemId);
-                        if (itemIndex !== -1) {
-                            cart.splice(itemIndex, 1);
-                        }
-
-                        updateCartDisplay();
-                    }
+                    await updateDoc(itemRef, { Quantity: updatedQuantity });
+                    console.log(`Item '${name}' quantity incremented`);
                 } catch (error) {
                     console.error("Error updating quantity:", error);
                 }
+
+                cart.splice(index, 1);
+                updateCartDisplay();
             });
-
-
             cartItemContainer.appendChild(cartItemDiv);
         });
     }

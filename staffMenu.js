@@ -19,7 +19,7 @@ const firebaseConfig = {
     storageBucket: "anzel-main.appspot.com",
     messagingSenderId: "1016468813112",
     appId: "1:1016468813112:web:f10bfb619f3e1568917dcd"
-  };
+};
 
 // Initialize Firebase with the provided configuration
 initializeApp(firebaseConfig);
@@ -118,6 +118,13 @@ items.addEventListener('click', (e) => {
 
         // Add an event listener to the "Update" button in the pop-up box
         document.getElementById('updateSubmit').addEventListener('click', async () => {
+            const documentId = document.getElementById('updateDocumentId').value;
+            const updatedName = document.getElementById('updateName').value;
+            const updatedPrice = document.getElementById('updatePrice').value;
+            const updatedQuantity = document.getElementById('updateQuantity').value;
+            const updatedImageInput = document.getElementById('updateImageInput');
+            const updatedImageFile = updatedImageInput.files[0];
+            
             await UpdItem(documentId);
             const itemRef = doc(db, 'menu', documentId);
 
@@ -126,7 +133,7 @@ items.addEventListener('click', (e) => {
                 await updateDoc(itemRef, {
                     Name: updatedName,
                     Price: updatedPrice,
-                    Quantity: updatedQuantity,
+                    Quantity: parseInt(updatedQuantity),
                 });
 
                 if (updatedImageFile) {
@@ -169,7 +176,7 @@ function UpdItem(documentId) {
     const updateData = {
         Name: updatedName,
         Price: updatedPrice,
-        Quantity: updatedQuantity,
+        Quantity: parseInt(updatedQuantity),
     };
 
     if (updatedImageFile) {
@@ -202,5 +209,5 @@ function UpdItem(documentId) {
 // Event listener for the "Logout" button
 const logoutButton = document.querySelector('#logout');
 logoutButton.addEventListener('click', () => {
-    window.location.assign("stafflogin.html"); 
+    window.location.assign("stafflogin.html");
 });
