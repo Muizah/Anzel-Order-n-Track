@@ -62,7 +62,7 @@ function addItem(image, name, price, quantity, itemId) {
     itemTwo.setAttribute('src', image);
     itemThree.innerHTML = name;
     itemFour.innerHTML = '₦' + price;
-    itemFive.innerHTML = quantity;
+    itemFive.innerHTML = 'Quantity: ' + quantity;
     itemSix.innerHTML = 'Add to cart';
 
     itemSix.setAttribute('data-item-id', itemId);
@@ -176,7 +176,7 @@ checkoutBtn.addEventListener('click', async () => {
             email: 'mapampa7@gmail.com',
             amount: totalAmount * 100, // Amount in kobo (N2000)
             currency: 'NGN',
-            ref: 'ABFDEFW3456', // Unique reference for the transaction
+            ref: 'ABFDECCFW3456', // Unique reference for the transaction
             callback: function (response) {
                 alert('Payment complete! Reference: ' + response.reference);
                 window.location.href = 'checkout.html';
