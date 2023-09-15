@@ -62,7 +62,7 @@ function addItem(image, name, price, quantity, itemId) {
     itemTwo.setAttribute('src', image);
     itemThree.innerHTML = name;
     itemFour.innerHTML = '₦' + price;
-    itemFive.innerHTML = 'Quantity: ' + quantity;
+    itemFive.innerHTML =  quantity;
     itemSix.innerHTML = 'Add to cart';
 
     itemSix.setAttribute('data-item-id', itemId);

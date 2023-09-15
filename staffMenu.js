@@ -70,7 +70,7 @@ function addItem(image, name, price, quantity, documentId) {
     itemTwo.setAttribute('src', image);
     itemThree.innerHTML = name;
     itemFour.innerHTML = '₦' + price;
-    itemFive.innerHTML = 'Quantity: ' + quantity;
+    itemFive.innerHTML =  quantity;
     itemSix.innerHTML = 'Edit';
     newDiv.setAttribute('data-document-id', documentId);
     itemFive.classList.add('itemFive');
